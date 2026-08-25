@@ -1,0 +1,13 @@
+---
+controller_projects_all:
+  - name: "aap-platform-config"
+    description: "Platform Configuration as Code"
+    organization: Platform
+    scm_type: git
+    scm_url: "{{ platform_cac_repo_url }}"
+    scm_branch: main
+    credential: platform-scm
+    scm_update_on_launch: true
+    update_project: true
+    state: present
+...
