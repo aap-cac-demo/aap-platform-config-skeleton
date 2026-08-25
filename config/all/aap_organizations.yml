@@ -1,0 +1,10 @@
+---
+aap_organizations_all:
+  - name: Platform
+    description: "Platform workspace for shared resources and administration"
+    galaxy_credentials:
+      - hub-galaxy-rh-certified
+      - hub-galaxy-validated
+      - hub-galaxy-published
+    state: present
+...

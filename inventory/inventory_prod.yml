@@ -1,0 +1,13 @@
+---
+all:
+  children:
+    prod:
+      hosts:
+        localhost:
+  vars:
+    env: prod
+    aap_hostname: "<AAP_PROD_GATEWAY_URL>"
+    aap_username: "{{ aap_user }}"
+    aap_password: "{{ aap_pass }}"
+    aap_validate_certs: <AAP_PROD_VALIDATE_CERTS>
+...
