@@ -1,0 +1,4 @@
+---
+# Optional custom RBAC roles. Add customer-approved role definitions here.
+gateway_role_definitions_all: []
+...

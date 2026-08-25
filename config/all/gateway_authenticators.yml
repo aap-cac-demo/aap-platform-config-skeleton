@@ -1,0 +1,31 @@
+---
+# LDAP authenticator configuration. Values are supplied per environment.
+gateway_authenticators_all:
+  - name: corporate-ldap
+    type: ansible_base.authentication.authenticator_plugins.ldap
+    enabled: true
+    configuration:
+      SERVER_URI:
+        - "{{ ldap_host }}"
+      BIND_DN: "{{ ldap_bind_dn }}"
+      BIND_PASSWORD: "{{ ldap_bind_password }}"
+      USER_SEARCH:
+        - "{{ ldap_user_search_base }}"
+        - SCOPE_SUBTREE
+        - "{{ ldap_user_search_filter }}"
+      USER_DN_TEMPLATE: null
+      USER_ATTR_MAP:
+        first_name: givenName
+        last_name: sn
+        email: mail
+      GROUP_SEARCH:
+        - "{{ ldap_group_search_base }}"
+        - SCOPE_SUBTREE
+        - "{{ ldap_group_search_filter }}"
+      GROUP_TYPE: "{{ ldap_group_type }}"
+      GROUP_TYPE_PARAMS:
+        name_attr: "{{ ldap_group_name_attr }}"
+      START_TLS: "{{ ldap_start_tls | bool }}"
+    order: 2
+    state: present
+...

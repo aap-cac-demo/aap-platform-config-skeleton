@@ -1,0 +1,13 @@
+---
+# Global execution environments are visible to every organization.
+controller_execution_environments_all:
+  - name: ee-supported
+    image: "registry.redhat.io/ansible-automation-platform-27/ee-supported-rhel9:latest"
+    pull: missing
+    state: present
+
+  - name: ee-minimal
+    image: "registry.redhat.io/ansible-automation-platform-27/ee-minimal-rhel9:latest"
+    pull: missing
+    state: present
+...

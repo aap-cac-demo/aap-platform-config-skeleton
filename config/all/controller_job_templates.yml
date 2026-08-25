@@ -1,0 +1,41 @@
+---
+controller_templates_all:
+  - name: "Refresh Hub Galaxy Token"
+    organization: Platform
+    project: aap-platform-config
+    playbook: "playbooks/refresh_hub_galaxy_token.yml"
+    inventory: cac-localhost
+    execution_environment: "ee-supported"
+    extra_vars:
+      env: "{{ env }}"
+    credentials:
+      - platform-gateway-cred
+    state: present
+
+  - name: "Sync Hub Collections"
+    description: "Sync configured upstream collection remotes"
+    organization: Platform
+    project: aap-platform-config
+    playbook: "playbooks/sync_hub_collections.yml"
+    inventory: cac-localhost
+    execution_environment: "ee-supported"
+    extra_vars:
+      env: "{{ env }}"
+    credentials:
+      - platform-gateway-cred
+      - platform-secrets
+    state: present
+
+controller_schedules_all:
+  - name: "Refresh Hub Galaxy Token - Scheduled"
+    unified_job_template: "Refresh Hub Galaxy Token"
+    rrule: >-
+      DTSTART:20260101T000000Z
+      RRULE:FREQ=HOURLY;INTERVAL={{
+        ((hub_galaxy_token_expire_seconds | int) *
+         (hub_galaxy_token_refresh_buffer | float) / 3600)
+        | int | default(6, true)
+      }}
+    enabled: true
+    state: present
+...

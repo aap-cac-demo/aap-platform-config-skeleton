@@ -1,0 +1,6 @@
+---
+aap_teams_all:
+  - name: platform-operators
+    organization: Platform
+    state: present
+...
