@@ -25,6 +25,7 @@ gateway_authenticators_all:
       GROUP_TYPE: "{{ ldap_group_type }}"
       GROUP_TYPE_PARAMS:
         name_attr: "{{ ldap_group_name_attr }}"
+        member_attr: "{{ ldap_group_member_attr }}"
       START_TLS: "{{ ldap_start_tls | bool }}"
     order: 2
     state: present

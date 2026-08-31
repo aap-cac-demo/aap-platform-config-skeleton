@@ -26,4 +26,3 @@
 
     - name: Set up Hub remotes and sync collections
       ansible.builtin.include_tasks: _hub_sync_tasks.yml
-...
